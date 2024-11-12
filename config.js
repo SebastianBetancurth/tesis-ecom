@@ -1,4 +1,5 @@
 require('dotenv').config();
+const API_URL = 'https://tu-dominio-en-vercel.vercel.app'
 const mysql = require('mysql2/promise');
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
@@ -6,4 +7,5 @@ const pool = mysql.createPool({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME
 });
+process.env.API_URL
 module.exports=pool;

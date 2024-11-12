@@ -24,7 +24,7 @@ const registrarUsuario = async () => {
     }
 
     try {
-        const response = await fetch('http://localhost:8080/usuario/crearUsuario', {
+        const response = await fetch('https://tesis-ecom.vercel.app/usuario/crearUsuario', {
             method: 'POST',
             body: formData,
         });

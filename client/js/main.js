@@ -34,7 +34,7 @@ function mostrarLoginObligatorio() {
 
 // Función para cargar los productos si el usuario está autenticado
 function cargarProductos() {
-    $.get('http://localhost:8080/productos/verProductos', function(data) {
+    $.get('https://tesis-ecom.vercel.app/productos/verProductos', function(data) {
         const productList = $('#product-list');
         productList.empty();
         data.forEach(product => {
@@ -79,7 +79,7 @@ function agregarAlCarrito(productId, cantidad = 1) {
     }
 
     // Obtener los detalles del producto desde el servidor antes de agregarlo al carrito
-    fetch(`http://localhost:8080/productos/verProducto/${productId}`)
+    fetch(`https://tesis-ecom.vercel.app/productos/verProducto/${productId}`)
         .then(response => response.json())
         .then(product => {
             if (!product || !product.id_producto) {
@@ -154,7 +154,7 @@ function eliminarDelCarrito(productId) {
     actualizarCuentaCarrito();
 
     // Eliminar producto del carrito en la base de datos
-    fetch(`http://localhost:8080/carrito/borrarProducto/${usuario.id_cliente}/${productId}`, {
+    fetch(`https://tesis-ecom.vercel.app/carrito/borrarProducto/${usuario.id_cliente}/${productId}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',

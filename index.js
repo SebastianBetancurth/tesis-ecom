@@ -5,7 +5,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.API_URL;
+
 
 app.use(cors({
   origin: ['https://tesis-ecom.vercel.app', 'http://127.0.0.1:5501'], 

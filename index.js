@@ -3,22 +3,41 @@ const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path');
 const bodyParser = require('body-parser');
+const mysql = require('mysql2'); 
 require('dotenv').config();
+
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
+
+
+const db = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.PORTDB,
+});
+
+
+db.connect((err) => {
+  if (err) {
+    console.error('Error al conectar a la base de datos:', err.stack);
+    return;
+  }
+  console.log('Conectado a la base de datos MySQL');
+});
 
 
 app.use(cors({
   origin: ['https://tesis-ecom.vercel.app', 'http://127.0.0.1:5501'], 
 }));
-
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Rutas
 const routerUsuario = require('./routes/usuariosRoutes');
 app.use('/usuario', routerUsuario);
-
 
 const routerProducto = require('./routes/productosRoutes');
 app.use('/productos', routerProducto);
@@ -33,14 +52,15 @@ const routerCarrito = require('./routes/carritoRoutes');
 app.use('/carrito', routerCarrito);
 
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/uploads', express.static('uploads'));
 
+// Manejo de errores
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Error en el servidor');
 });
 
+// Inicia el servidor
 app.listen(PORT, () => {
   console.log(`Servidor Express escuchando en el puerto ${PORT}`);
 });

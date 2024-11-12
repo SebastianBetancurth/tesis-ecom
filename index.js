@@ -5,7 +5,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 
 app.use(cors({
  origin: ['http://localhost:8080', 'http://127.0.0.1:5501'], 

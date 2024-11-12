@@ -74,7 +74,7 @@ function eliminarDelCarrito(productId) {
     }
 
     // Eliminar producto del carrito en la base de datos
-    fetch(`http://localhost:8080/carrito/borrarProducto/${usuario.id_cliente}/${productId}`, {
+    fetch(`https://tesis-ecom.vercel.app/carrito/borrarProducto/${usuario.id_cliente}/${productId}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
@@ -130,7 +130,7 @@ $(document).on('click', '.increase-quantity', function() {
     localStorage.setItem('cart', JSON.stringify(cart));
 
     // Actualizar la cantidad en la base de datos
-    fetch('http://localhost:8080/carrito/agregarProducto', {
+    fetch('https://tesis-ecom.vercel.app/carrito/agregarProducto', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -168,7 +168,7 @@ $(document).on('click', '.decrease-quantity', function() {
     localStorage.setItem('cart', JSON.stringify(cart));
 
     // Actualizar la cantidad en la base de datos
-    fetch('http://localhost:8080/carrito/agregarProducto', {
+    fetch('https://tesis-ecom.vercel.app/carrito/agregarProducto', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

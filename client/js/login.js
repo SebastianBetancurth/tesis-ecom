@@ -3,7 +3,7 @@ const login = async () => {
     const contrasena = document.getElementById('contrasena').value;
 
     try {
-        const response = await fetch('http://localhost:8080/usuario/login', {
+        const response = await fetch('https://tesis-ecom.vercel.app/usuario/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ const login = async () => {
 
 const cargarCarritoDelUsuario = async (id_cliente) => {
     try {
-        const response = await fetch(`http://localhost:8080/carrito/carritoUsuario/${id_cliente}`);
+        const response = await fetch(`https://tesis-ecom.vercel.app/carrito/carritoUsuario/${id_cliente}`);
         const contentType = response.headers.get("content-type");
 
         if (contentType && contentType.includes("application/json")) {

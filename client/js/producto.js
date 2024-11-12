@@ -28,7 +28,7 @@ $(document).ready(function() {
 
 function cargarDatosProducto(id) {
     // Llamada para obtener los datos del producto desde el backend
-    $.get(`http://localhost:8080/productos/verProducto/${id}`, function(producto) {
+    $.get(`https://tesis-ecom.vercel.app/productos/verProducto/${id}`, function(producto) {
         $('#producto-imagen').attr('src', producto.foto);
         $('#producto-nombre').text(producto.nombre);
         $('#producto-precio').text(`$${producto.precio}`);

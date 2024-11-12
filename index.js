@@ -8,7 +8,7 @@ const app = express();
 const PORT = process.env.PORT;
 
 app.use(cors({
-  origin: ['tesis-ecom-production.up.railway.app', 'http://127.0.0.1:5501'], 
+ origin: ['http://localhost:8080', 'http://127.0.0.1:5501'], 
 }));
 
 app.use(morgan('dev'));
